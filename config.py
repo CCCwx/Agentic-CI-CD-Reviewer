@@ -12,6 +12,10 @@ class Settings(BaseSettings):
     llm_provider: str = Field("gemini", alias="LLM_PROVIDER")
     llm_model: str = Field("gemini-1.5-flash", alias="LLM_MODEL")
     github_api_base_url: str = Field("https://api.github.com", alias="GITHUB_API_BASE_URL")
+    github_request_timeout_seconds: float = Field(30.0, alias="GITHUB_REQUEST_TIMEOUT_SECONDS")
+    github_max_retries: int = Field(3, alias="GITHUB_MAX_RETRIES")
+    github_retry_backoff_seconds: float = Field(1.0, alias="GITHUB_RETRY_BACKOFF_SECONDS")
+    github_retry_max_backoff_seconds: float = Field(8.0, alias="GITHUB_RETRY_MAX_BACKOFF_SECONDS")
     log_level: str = Field("INFO", alias="LOG_LEVEL")
 
     model_config = SettingsConfigDict(
